@@ -130,7 +130,7 @@ A = [2,1,18,2,1,18,9,2,1,18,9,9,2,1,18,9,2,1,18,9,3,989,90,78,56,45,34,2,-1,-10,
 					2,1,18,2,1,18,9,2,1,18,9,9,2,1,18,9,2,1,18,9,3,989,90,78,56,45,34,2,-1,-10,90,-90,2,1,18,2,1,18,9,2,1,18,9,9,2,1,18,9,2,1,18,9,3,989,90,78,56,45,34,2,-1,-10,90,-90,\
 					2,1,18,2,1,18,9,2,1,18,9,9,2,1,18,9,2,1,18,9,3,988,90,78,56,45,34,2,-1,-10,90,-90,2,1,18,2,1,18,9,2,1,18,9,9,2,1,18,9,2,1,18,9,3,989,90,78,56,45,34,2,-1,-10,90,-90,	]
 
-print insertion_sort(A)
+# print insertion_sort(A)
 
 def merge_sort(seq):
     if len(seq) == 1:
@@ -165,3 +165,35 @@ def merge_sort(seq):
         return seq
 
 print merge_sort(A)
+
+def bianry_search(seq,key):
+	# using recursion return only true false 
+	if len(seq) == 0:
+		return False
+	else:
+		mid = len(seq)//2
+
+		if seq[mid] == key:
+			return True
+		else:
+			if key < seq[mid]:
+				return bianry_search(seq[:mid],key)
+			else:
+				return bianry_search(seq[mid+1:],key)
+
+	# using iteration return index of found element 
+	low = 0 
+	high = len(seq)
+
+	while low < high :
+		mid = (low + high) / 2
+		if seq[mid] == key:
+			return mid
+		elif seq[mid] > key:
+			high = mid - 1
+
+		else:
+			low = mid + 1
+ return only true false 
+
+print bianry_search([2,4,6],6)
