@@ -194,6 +194,5 @@ def bianry_search(seq,key):
 
 		else:
 			low = mid + 1
- return only true false 
 
 print bianry_search([2,4,6],6)
