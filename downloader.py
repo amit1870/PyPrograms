@@ -9,18 +9,20 @@ def youtube_dl(file):
 				lines = lines.remove("")
 			f.close()
 			dlist = []
+			current_dir = os.getcwd()
+			Music = "/home/amit/Music"
 			if lines != None:
-
 				for line in lines:
-					# download video 
-					command = " cd ~/Music && youtube-dl -f 18 -q %s" %line
+					# download video
+					os.chdir(Music)
+					command = "youtube-dl -f 18 -q %s" %line
 					print command
 					os.system(command)
 					dlist.append(line)
 
 				for line in dlist:
 					lines.remove(line)
-
+			os.chdir(current_dir)
 			with open(file, 'w') as f:
 				if lines == None:
 					f.write("")
