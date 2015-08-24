@@ -1,4 +1,5 @@
 import os
+from urllib import urlopen
 def youtube_dl(file):
 	# lines = []
 	with open(file) as f:
@@ -32,4 +33,7 @@ def youtube_dl(file):
 						f.write("\n")
 				f.close()
 
-youtube_dl("urls.txt")
+status = urlopen("http://www.youtube.com").getcode()
+
+if status == 200:
+	youtube_dl("urls.txt")
