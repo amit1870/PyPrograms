@@ -138,10 +138,18 @@ print maximum_subarray(A,0,len(A)-1)
 
 
 def cross_maximum_subarray_linear(A):
-	pass
+	max_so_far = 0 
+	max_ending_here = 0
+	array = []
+	for item in A:
+		max_ending_here += item
+		if max_ending_here < 0 :
+			max_ending_here = 0
 
-print cross_maximum_subarray_linear(A)
+		if max_ending_here > max_so_far:
+			max_so_far = max_ending_here
+			array.append(item)
 
-def heapsort(A):
+	return max_so_far,array
 	
-
+print cross_maximum_subarray_linear(A)

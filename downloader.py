@@ -1,5 +1,11 @@
 import os
 from urllib import urlopen
+from os import listdir
+from os.path import isfile, join
+
+Music = "/home/amit/Music"
+current_dir = os.getcwd()
+
 def youtube_dl(file):
 	# lines = []
 	with open(file) as f:
@@ -10,8 +16,8 @@ def youtube_dl(file):
 				lines = lines.remove("")
 			f.close()
 			dlist = []
-			current_dir = os.getcwd()
-			Music = "/home/amit/Music"
+			
+			
 			if lines != None:
 				for line in lines:
 					# download video
@@ -36,4 +42,4 @@ def youtube_dl(file):
 status = urlopen("http://www.youtube.com").getcode()
 
 if status == 200:
-	youtube_dl("urls.txt")
+	youtube_dl("/home/amit/PyPrograms/urls.txt")

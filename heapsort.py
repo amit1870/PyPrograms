@@ -2,6 +2,7 @@ def heapsort(seq,heap_type=1):
 	length = len(seq)-1
 	if heap_type:
 		build_max_heap(seq,length)
+		print seq
 		for i in range(length,0,-1):
 			swap(seq,0,i)
 			max_heapify(seq,0,i-1)
@@ -76,5 +77,5 @@ def swap(seq,i,j):
 	seq[i] = seq[j]
 	seq[j] = tmp
 
-seq = [3,45,5,65,6,7,8]
+seq = [32,3,45,6,7,86,7,32,45,65,89,43,12,8]
 print heapsort(seq,heap_type=1)
