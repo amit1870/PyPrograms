@@ -16,10 +16,10 @@ def counting_sort(A,B,k):
 	print C
 	# putting A[j] into its correct sorted postion in B
 	for j in range(len_A-1,-1,-1):
-		# print C[A[j]]
+		print C[A[j]],
 		B[C[A[j]]-1] = A[j]
 		C[A[j]]  = C[A[j]] - 1
-		# print C
+		print C
 
 	return B
 

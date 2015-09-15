@@ -22,7 +22,7 @@ def youtube_dl(file):
 				for line in lines:
 					# download video
 					os.chdir(Music)
-					command = "youtube-dl -f 18 -q %s" %line
+					command = "youtube-dl -f 18 -q https://www.youtube.com/watch?v=%s" %line
 					print command
 					os.system(command)
 					dlist.append(line)
