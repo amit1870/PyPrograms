@@ -31,5 +31,23 @@ def main():
 
 	print "Pallindrome"
 	
+
+def pallindrom_by_reverse(number):
+	# there is a recusive way in recursion.py 
+	temp = number
+	rev_num = 0
+	while temp > 0 :
+		rev_num = rev_num * 10 + temp % 10 
+		temp /= 10
+
+	if number == rev_num:
+		return "Pallindrome"
+	else:
+		return "Not Pallindrome"
+
+
+print pallindrom_by_reverse(10000)
+
 if __name__ == "__main__":
-	main()
+	# main()
+	pass

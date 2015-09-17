@@ -84,7 +84,7 @@ def cross_maximum_subarray(A,low,mid,high):
 	return (max_left, max_right, left_sum + right_sum)
 
 A = [13,-3,-25,20,-3,-16,-23,18,20,-7,12,-5,-22,15,-4,7]
-print maximum_subarray(A,0,len(A)-1)
+# print maximum_subarray(A,0,len(A)-1)
 
 
 def cross_maximum_subarray_linear(A):
@@ -102,4 +102,44 @@ def cross_maximum_subarray_linear(A):
 
 	return max_so_far,array
 	
-print cross_maximum_subarray_linear(A)
+# print cross_maximum_subarray_linear(A)
+
+
+rev_num = 0
+base_pos = 1
+def reverseDigit(number):
+
+	"""
+	python(global) == C(static) 
+	Concept: A static variable inside a function keeps its value between invocations.
+
+	http://stackoverflow.com/questions/572547/what-does-static-mean-in-a-c-program
+	"""
+	global rev_num, base_pos
+
+	if number > 0:
+		reverseDigit(number / 10)
+		rev_num += (number % 10 )* base_pos
+		base_pos *= 10
+
+	return rev_num
+
+def pallindrom(number):
+	''' this program print trailing 0's in reverse number '''
+
+	zeros = 0 
+	while number:
+		if number % 10 == 0:
+			zeros += 1
+			number /= 10
+		else:
+			break
+
+	print "%s%s" % ("0"*zeros, reverseDigit(number))
+
+	if reverseDigit(number) == number:
+		return "Pallindrom"
+	else:
+		return "Not Pallindrom"
+
+print pallindrom(10000010)
