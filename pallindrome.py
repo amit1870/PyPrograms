@@ -46,7 +46,7 @@ def pallindrom_by_reverse(number):
 		return "Not Pallindrome"
 
 
-print pallindrom_by_reverse(10000)
+# print pallindrom_by_reverse(10000)
 
 if __name__ == "__main__":
 	# main()

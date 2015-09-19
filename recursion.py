@@ -121,7 +121,6 @@ def reverseDigit(number):
 		reverseDigit(number / 10)
 		rev_num += (number % 10 )* base_pos
 		base_pos *= 10
-
 	return rev_num
 
 def pallindrom(number):
@@ -135,11 +134,43 @@ def pallindrom(number):
 		else:
 			break
 
-	print "%s%s" % ("0"*zeros, reverseDigit(number))
-
+	# print "%s%s" % ("0"*zeros, reverseDigit(number))
 	if reverseDigit(number) == number:
 		return "Pallindrom"
 	else:
 		return "Not Pallindrom"
 
-print pallindrom(10000010)
+	
+
+print pallindrom(1221)
+
+
+# print all possible combination of r elements in a given array of size n
+
+def combination(arr, data, start, end, index):
+	if index == r:
+		for j in range(0,r):
+			print data[j]
+		return
+
+	# replace index with all possible elements. The condition
+	# "end-i+1 >= r-index" make sure that including one element 
+	# at tindex will make a combination  with remaining elements 
+	# at remainging positions 
+
+	i = start
+	while i <= end and end - i + 1 >= r-index:
+		data[index] = arr[i]
+		combination(arr, data, i+1, end, index+1, r)
+
+	return data
+
+arr = [1,2,3]
+r = 3
+n = len(arr)
+
+def create_combination(arr,n,r):
+	data = []*r
+	combination(arr,data,0,n-1,r)
+
+# print create_combination(arr,n,r)
