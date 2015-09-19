@@ -1,67 +1,25 @@
 intit = lambda x: int(x)
+def hasPerfectSquare(n):
+	j = n * 100 
+	for i in range(1,n*5):
+		j = float((j+(n/j))/2)
+	return True if not j % 1 else False
 
-def sqaure_root(n):
-	temp = n
-	flag = False
-	dict = {}
-	while temp != 1:
+def square_integer(numbers):
+	numbers = numbers.split(" ")
+	A,B = map(intit,numbers)
+	count = 0 
+	if B >= A:
+		for x in range(A,B+1):
+			if hasPerfectSquare(x):
+				count += 1
 
-		if isPrime(temp) and not flag:
-			return False
+	return count
 
-		if isEven(temp):
-			temp /= 2
-			update_dict(dict,2)
-			flag = True
+# print square_integer("4 9")
 
-		if temp % 3 == 0:
-			temp /= 3
-			update_dict(dict,3)
-			flag = True
-
-		if temp % 5 == 0:
-			temp /= 5
-			update_dict(dict,5)
-			flag = True
-
-		for i in range(11,n/2+1):
-			if isPrime(i) and temp % i == 0:
-				temp /= i
-				update_dict(dict,i)
-
-	return dict
-
-
-
-
-
-
-
-
-
-
-
-
-def update_dict(dict,n):
-	if dict.has_key(n):
-		dict[n] += 1
-	else:
-		dict[n] = 1
-
-
-def isPrime(n):
-	for i in range(2,n/2+1):
-		if n % i == 0:
-			return False
-	return True
-
-def isEven(n):
-	return n % 2 == 0
-
-print sqaure_root(1024)
-
-# t = input()
-# while t > 0:
-# 	n = input()
-# 	print sqaure_root(1024)
-# 	t -= 1
+t = input()
+while t > 0:
+	numbers = raw_input()
+	print square_integer(numbers)
+	t -= 1
