@@ -1,8 +1,7 @@
 intit = lambda x: int(x)
+import math
 def hasPerfectSquare(n):
-	j = n * 100 
-	for i in range(1,n*5):
-		j = float((j+(n/j))/2)
+	j = math.sqrt(n)
 	return True if not j % 1 else False
 
 def square_integer(numbers):
