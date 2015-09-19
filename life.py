@@ -3,7 +3,6 @@ from datetime import datetime
 
 
 class Life(object):
-	
 
 	def __init__(self,janama,dob,gender):
 		self.janama = janama
@@ -14,6 +13,7 @@ class Life(object):
 		self.satisfied = None
 		self.spouse = False
 		self.age = self.getAge()
+		self.karma = {'Paropkar':0,'Apkar':0}
 
 
 
@@ -115,6 +115,9 @@ class Life(object):
 		return self.diff.days / 365
 
 
+	def doingKarma(self,karma):
+		self.karma[karma] += 1
+
 
 	def isAlive(self):
 		self.now = datetime.now()
@@ -122,6 +125,13 @@ class Life(object):
 		if self.diff.days >= 36500:
 			return False
 		return True
+
+	def afterDeath(self):
+		if self.karma['Paropkar'] >= self.karma['Apkar']:
+			return "This Manusya goes to Swarg.."
+
+		return "This Manusya goes to Narka.."
+
 
 
 life = Life("Manusya","12-06-1989","Male")
@@ -141,6 +151,15 @@ if __name__ == "__main__":
 		# print life.spouse
 		print life.isSatisfied()
 		print life.isLookingForSpouse()
+		for x in range(0,1000):
+			if x % 2 == 0:
+				life.doingKarma('Apkar')
+			else:
+				life.doingKarma('Paropkar')
+
+
+		print life.afterDeath()
+		print life.karma
 		if life.isEnjoying():
 			print "This Manusya is enjoying a lot.."
 
