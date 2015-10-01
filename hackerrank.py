@@ -1,24 +1,32 @@
-intit = lambda x: int(x)
-import math
-def hasPerfectSquare(n):
-	j = math.sqrt(n)
-	return True if not j % 1 else False
+def lexoString(word):
+	word = list(word)
+	# find non-increasing suffix 
+	i = len(word) - 1
+	while  i > 0 and word[i-1] >= word[i]:
+		i -= 1 
+	if i <= 0:
+		return "no answer"
 
-def square_integer(numbers):
-	numbers = numbers.split(" ")
-	A,B = map(intit,numbers)
-	count = 0 
-	if B >= A:
-		for x in range(A,B+1):
-			if hasPerfectSquare(x):
-				count += 1
+	print i
+	# find successor to pivot 
+	j = len(word) - 1
+	while word[j] <= word[i-1] :
+		j -= 1
+	print j
+	# exchanging pivot with next greatest element
+	word[i-1], word[j] = word[j], word[i-1]
+	
+	# reverse suffix 
+	print word,i
+	temp = word[len(word)-i : i-1 : -1]
+	print temp
+	word = word + temp
+	return "".join(word)
+	
 
-	return count
-
-# print square_integer("4 9")
-
-t = input()
-while t > 0:
-	numbers = raw_input()
-	print square_integer(numbers)
-	t -= 1
+# T = input()
+# while T > 0:
+# 	word = raw_input()
+# 	print lexoString(word)
+# 	T -= 1
+print lexoString("haibcdegf")

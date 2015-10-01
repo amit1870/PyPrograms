@@ -17,7 +17,7 @@ def insertion_sort(A):
 
 	return A
 
-# print insertion_sort(A)
+print insertion_sort(A)
 
 # merge sort use divide and conquer algorithm
 # this divides the input array to non-dividable chunk of element (one element)
@@ -91,4 +91,4 @@ def swap(seq,i,j):
 	seq[j] = tmp
 
 seq = [34,34,34,34,34,34,34]
-print quicksort(seq,0,len(seq)-1)
+# print quicksort(seq,0,len(seq)-1)
