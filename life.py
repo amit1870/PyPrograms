@@ -146,10 +146,10 @@ life = Life("Prani","12-06-1989","Male")
 
 if __name__ == "__main__":
 	if life.isAlive():
-		life.gfEntry()
+		# life.gfEntry()
 		life.doStudy("SSC")
 		life.doStudy("HSC")
-		# life.doStudy("Preparation")
+		life.doStudy("Preparation")
 		life.doStudy("B.Tech")
 
 		# print life.hasDegree()

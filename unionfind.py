@@ -1,64 +1,79 @@
-V = 3
-E = 3
-class Edge(object):
-	def __init__(self,src,dest):
-		self.src = src
-		self.dest = dest
+class QuickFind(object):
+    def __init__(self,N=0):
+        self.N = N
+        self.id = range(self.N)
 
-class Graph(object):
-	def __init__(self,V,E):
-		self.edge = Edge(None,None)
-		self.V = V
-		self.E = E
+    def find(self,p,q):
+        return self.id[p] == self.id[q]
 
+    def unite(self,p,q):
+        pid = self.id[p]
+        for i in range(self.N): 
+            if self.id[i] == pid: self.id[i] = self.id[q]
 
-# a utility function to find the subset of an element i 
-def find(parent, i):
-	if parent[i] == -1:
-		return i
-	return find(parent,parent[i])
-
-# a utility function to do union of two subsets
-
-def Union(parent, x, y):
-	xset = find(parent,x)
-	yset = find(parent,y)
-	parent[xset] = yset
-
-def isCycle(graph):
-	global V,E
-	parent = [-1] * V
-	for i in range(0,graph.E) :
-		x = find(parent, graph.edge.src)
-		y = find(parent,graph.edge.dest)
-
-		if x == y:
-			return True
-		Union(parent,x,y)
-
-	return False
-
-def main():
-	global V, E
-	graph = Graph(V,E)
-
-	# add edge 0-1
-	graph.edge.src = 0
-	graph.edge.dest = 1
-
-	# # add edge 1-2
-	graph.edge.src = 1
-	graph.edge.dest = 2
-
-	# # add edge 0-2
-	graph.edge.src = 0
-	graph.edge.dest = 2
-
-	if isCycle(graph):
-		print "Graph contains cycle"
-	else:
-		print "Graph doesn't contain cycle"
+qf = QuickFind(10)
+qf.unite(1,9)
+# print qf.find(1,9)
 
 
-main()
+class QuickUnion(object):
+    def __init__(self,N=0):
+        self.N = N
+        self.id = range(self.N)
+
+    def root(self,i):
+        while i != self.id[i]: i = self.id[i]
+        return i
+
+    def find(self,p,q):
+        return self.root(p) == self.root(q)
+
+    def unite(self,p,q):
+        self.id[self.root(p)] = self.root(q)
+
+
+qu = QuickUnion(10)
+qu.unite(3,4)
+qu.unite(4,9)
+qu.unite(8,0)
+qu.unite(2,3)
+qu.unite(5,6)
+qu.unite(5,9)
+# print qu.find(6,9)
+
+class WeightedQuickUnion(object):
+    def __init__(self,N=0):
+        self.N = N
+        self.id = range(self.N)
+        self.sz = [0]*self.N
+
+    def root(self,i):
+        while i != self.id[i]: i = self.id[i]
+        return i
+
+        
+    def find(self,p,q):
+        return self.root(p) == self.root(q)
+
+    def unite(self,p,q):
+        # merge smaller trees into larger tree
+        if self.sz[p] < self.sz[q] : 
+            self.id[p] = q
+            self.sz[q] += self.sz[p]
+
+        else:
+            self.id[q] = p
+            self.sz[p] += self.sz[q]
+
+wqu = WeightedQuickUnion(10)
+wqu.unite(3,4)
+wqu.unite(4,9)
+wqu.unite(8,0)
+wqu.unite(2,3)
+wqu.unite(5,6)
+wqu.unite(5,9)
+
+print wqu.find(8,3)
+
+
 

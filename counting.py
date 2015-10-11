@@ -1,6 +1,7 @@
-def counting_sort(A,B,k):
+def counting_sort(A,k):
 	# creating a temp array for counting values in the range k 
 	C = [0]*(k+1)
+	B = [None] * len(A)
 	len_A = len(A)
 	 
 	for x in range(0,len_A):
@@ -24,6 +25,6 @@ def counting_sort(A,B,k):
 	return B
 
 A = [2,1,3,0,1,1,2,3,0,1]
-B = [None] * len(A)
 
-print counting_sort(A,B,5)
+
+print counting_sort(A,5)
