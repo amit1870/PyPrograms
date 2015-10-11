@@ -72,8 +72,39 @@ wqu.unite(8,0)
 wqu.unite(2,3)
 wqu.unite(5,6)
 wqu.unite(5,9)
+# print wqu.find(8,3)
 
-print wqu.find(8,3)
+class PathCompression(object):
+    def __init__(self,N=0):
+        self.N = N
+        self.id = range(self.N)
+        self.sz = [0]*self.N
 
+    def root(self,i):
+        while i != self.id[i]:
+            self.id[i] = self.id[self.id[i]]
+            i = self.id[i]
+        return i 
 
+    def find(self,p,q):
+        return self.root(p) == self.root(q)
 
+    def unite(self,p,q):
+        # merge smaller trees into larger tree
+        if self.sz[p] < self.sz[q] :
+            self.id[p] = q
+            self.sz[q] += self.sz[q]
+
+        else:
+            self.id[q] = p
+            self.sz[p] += self.sz[q]
+
+pathcmp = PathCompression(10)
+pathcmp.unite(3,4)
+pathcmp.unite(4,9)
+pathcmp.unite(8,0)
+pathcmp.unite(2,3)
+pathcmp.unite(5,6)
+pathcmp.unite(5,9)
+
+print pathcmp.find(9,8)
