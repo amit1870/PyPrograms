@@ -45,6 +45,29 @@ def pallindrom_by_reverse(number):
 	else:
 		return "Not Pallindrome"
 
+def str_pallindrome(string):
+	len_s = len(string)
+
+	for i in range(0,len_s/2):
+		if string[i] != string[-i-1]:
+			return False
+	return True
+
+
+print str_pallindrome("madaam")
+
+def str_reverse(string):
+	len_s = len(string)
+	i = len_s-1
+	rev = ""
+	while i >= 0:
+		rev += string[i]
+		i -= 1
+	return rev
+
+print str_reverse("amitpatel")
+
+
 
 # print pallindrom_by_reverse(10000)
 

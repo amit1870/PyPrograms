@@ -32,3 +32,9 @@ mutate_reference(outer_list)
 print "after mutation ", outer_list
 
 
+def reassign(list):
+	list.append(23)
+
+list = [1,2]
+reassign(list)
+print list
