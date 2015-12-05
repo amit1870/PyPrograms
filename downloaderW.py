@@ -3,7 +3,7 @@ from urllib import urlopen
 from os import listdir
 from os.path import isfile, join
 
-Music = "/d/users/f56046b/Music"
+Music = os.getcwd()
 current_dir = os.getcwd()
 
 def youtube_dl(file):
@@ -15,31 +15,17 @@ def youtube_dl(file):
 			if "" in lines:
 				lines = lines.remove("")
 			f.close()
-			dlist = []
-			
 			
 			if lines != None:
 				for line in lines:
 					# download video
 					os.chdir(Music)
-					command = "youtube-dl.exe -f 18 -q https://www.youtube.com/watch?v=%s" %line
+					command = "youtube-dl.exe -f 18  https://www.youtube.com/watch?v=%s" %line
 					print command
 					os.system(command)
-					dlist.append(line)
-
-				for line in dlist:
-					lines.remove(line)
 			os.chdir(current_dir)
-			with open(file, 'w') as f:
-				if lines == None:
-					f.write("")
-				else:
-					for line in lines:
-						f.write(line)
-						f.write("\n")
-				f.close()
 
 status = urlopen("http://www.youtube.com").getcode()
 
 if status == 200:
-	youtube_dl("urls.txt")
+	youtube_dl("D:/urls.txt")
