@@ -21,7 +21,7 @@ class Employee(Person,Job):
 
 		super(Employee,self).__init__(name,gender,age)
 		# super(Employee,self).__init__(type)
-		pass
+	
 
 emp = Employee("Amit","Male",27,"Engineer")
 
