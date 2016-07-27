@@ -20,17 +20,19 @@ def matching(string,pattern,count):
 	len_s = len(string)
 	i = 0
 	match = 0
-	while i < len_s-2:
+	while i < len_s-len(pattern)+1:
 		seq = []
-		for j in range(i,i+3):
+		for j in range(i,i+len(pattern)):
 			seq.append(string[j])
-			if len(seq) == 3:
-				if "".join(seq) == "cat":
+			if len(seq) == len(pattern):
+				if "".join(seq) == pattern:
 					match +=1 
 				else:
 					break
 			
 		i += 1
+
+	# print count,match
 	if count == match:
 		return True
 
@@ -38,4 +40,4 @@ def matching(string,pattern,count):
 
 
 
-print matching("ccataccat","cat",2)
+print matching("amitpatelmamtapatellalbahadurpatel","patel",3)
